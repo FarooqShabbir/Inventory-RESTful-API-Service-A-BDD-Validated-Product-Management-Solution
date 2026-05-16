@@ -1,11 +1,11 @@
 # ----------------------------------------------------------------------------
 # Customer Accounts Microservice - Production Docker Image
-# Multi-stage build for a small, secure runtime image
 # ----------------------------------------------------------------------------
 
-FROM python:3.9-slim AS base
+# Base image
+FROM python:3.9-slim
 
-# Prevent Python from writing .pyc files and enable unbuffered logging
+# Environment hygiene
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
@@ -16,7 +16,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends gcc libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Create application directory
+# Create and set the working directory
 WORKDIR /app
 
 # Install Python dependencies first (better layer caching)
@@ -24,9 +24,8 @@ COPY requirements.txt .
 RUN pip install --upgrade pip wheel \
     && pip install -r requirements.txt
 
-# Copy the application source
-COPY service/ ./service/
-COPY wsgi.py .
+# Copy all application files into the container
+COPY . .
 
 # Create a non-root user and switch to it for security
 RUN useradd --uid 1001 --create-home --shell /bin/bash flask \
@@ -40,5 +39,5 @@ EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:8080/health').read()" || exit 1
 
-# Run the service with gunicorn in production
+# Run the Customer Accounts service with gunicorn (production WSGI server)
 CMD ["gunicorn", "--bind=0.0.0.0:8080", "--workers=2", "--log-level=info", "wsgi:app"]
