@@ -7,4 +7,14 @@ on:
     branches: [ main ]
 
 jobs:
-  run: "Hello world"
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Hello World Message
+        run: |
+          echo "Hello, World! Continuous Integration pipeline started successfully."
+          echo "The runner environment is ready."
