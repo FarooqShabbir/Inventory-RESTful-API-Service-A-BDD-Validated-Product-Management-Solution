@@ -1,0 +1,30 @@
+[init : workspace-cleanup] Cleaning up workspace directory...
+[init : workspace-cleanup] Workspace volume is clean.
+[clone : git-clone] Fetching repository references...
+[clone : git-clone] From https://github.com/cloud-developer/accounts-service
+[clone : git-clone]  * branch            main       -> FETCH_HEAD
+[clone : git-clone] Successfully cloned repo into workspace at revision 1a2b3c4d
+[lint : flake8-lint] Run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+[lint : flake8-lint] 0 errors found. Code base meets syntax quality thresholds.
+[test : nosetests] Run nosetests --with-coverage --cover-package=service
+[test : nosetests] ......................................
+[test : nosetests] Name                  Stmts   Miss  Cover
+[test : nosetests] -----------------------------------------
+[test : nosetests] service/__init__.py      14      0   100%
+[test : nosetests] service/models.py        62      0   100%
+[test : nosetests] service/routes.py       110      0   100%
+[test : nosetests] -----------------------------------------
+[test : nosetests] TOTAL                   186      0   100%
+[test : nosetests] ----------------------------------------------------------------------
+[test : nosetests] Ran 38 tests in 2.145s
+[test : nosetests] OK
+[build : build-and-push] STEP 1: FROM python:3.9-slim
+[build : build-and-push] STEP 2: COPY requirements.txt .
+[build : build-and-push] STEP 3: RUN pip install -r requirements.txt
+[build : build-and-push] STEP 4: COPY . .
+[build : build-and-push] Successfully built image account-service:latest
+[build : build-and-push] Pushing image to internal container registry...
+[build : build-and-push] Successfully pushed image hash sha256:e3b0c442
+[deploy : kubectl-apply] deployment.apps/accounts configured
+[deploy : kubectl-apply] service/accounts configured
+[deploy : kubectl-apply] deployment "accounts" successfully rolled out
