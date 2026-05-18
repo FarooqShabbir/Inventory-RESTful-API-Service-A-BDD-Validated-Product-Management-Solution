@@ -1,43 +1,18 @@
-# DevOps Capstone Project
+# Simple Interest Calculator
 
-[![Build Status](https://github.com/FarooqShabbir/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)](https://github.com/FarooqShabbir/devops-capstone-project/actions)
+A simple tool to calculate the interest on a loan or investment based on the principal amount, rate of interest, and time period.
 
-## Customer Accounts Microservice
+## Formula
+The formula used is:
+**SI = (P × R × T) / 100**
 
-This project is the DevOps Capstone for the IBM DevOps and Software Engineering Professional Certificate. It implements a RESTful Customer Accounts microservice built with Flask, containerized with Docker, and deployed to Kubernetes via a Tekton CD pipeline.
+Where:
+* **P** = Principal amount
+* **R** = Annual interest rate
+* **T** = Time (in years)
 
-## Features
-
-- RESTful CRUD API for customer accounts
-- SQLAlchemy ORM with PostgreSQL/SQLite
-- Automated tests with 95%+ coverage (nosetests)
-- Linting with Flake8 and Pylint
-- Continuous Integration via GitHub Actions
-- Security headers via Flask-Talisman, CORS via Flask-CORS
-- Docker containerization
-- Kubernetes deployment manifests
-- Tekton CD pipeline
-
-## API Endpoints
-
-| Method | Endpoint           | Description                |
-|--------|--------------------|----------------------------|
-| GET    | `/`                | Service info               |
-| GET    | `/health`          | Health check               |
-| POST   | `/accounts`        | Create an account          |
-| GET    | `/accounts`        | List all accounts          |
-| GET    | `/accounts/<id>`   | Read an account            |
-| PUT    | `/accounts/<id>`   | Update an account          |
-| DELETE | `/accounts/<id>`   | Delete an account          |
-
-## Running Locally
-
-```bash
-pip install -r requirements.txt
-export FLASK_APP=wsgi:app
-flask run
-```
-
-## License
-
-Licensed under the Apache License 2.0.
+## How to Use
+1. Input the principal amount.
+2. Input the annual interest rate (as a percentage).
+3. Input the time period in years.
+4. The tool will calculate the Simple Interest and the Total Amount.
