@@ -1,4 +1,5 @@
-Project Name: OpenShift-Tekton-CICD-Pipeline
+**Project Name: OpenShift-Tekton-CICD-Pipeline**
+
 Overview
 This project demonstrates the implementation of a full-scale CI/CD pipeline for a [type of application, e.g., Node.js/Python] web application. By leveraging modern DevOps tools, this project automates the transition of code from development to production on an OpenShift cluster.
 
