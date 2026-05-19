@@ -1,18 +1,30 @@
-# Simple Interest Calculator
+# EmotionSense: AI-Powered Emotion Detection
 
-A simple tool to calculate the interest on a loan or investment based on the principal amount, rate of interest, and time period.
+EmotionSense is a full-stack web application designed to analyze text and detect underlying emotions. By leveraging IBM Watson's Natural Language Processing (NLP) library, the application identifies scores for anger, disgust, fear, joy, and sadness to provide a comprehensive emotional profile of any given input.
 
-## Formula
-The formula used is:
-**SI = (P × R × T) / 100**
+## Table of Contents
+* [Features](#features)
+* [Technology Stack](#technology-stack)
+* [Installation](#installation)
+* [Usage](#usage)
+* [API Reference](#api-reference)
+* [Testing](#testing)
 
-Where:
-* **P** = Principal amount
-* **R** = Annual interest rate
-* **T** = Time (in years)
+## Features
+- **Real-time Analysis:** Instant emotion detection from text input.
+- **Watson NLP Integration:** High-accuracy emotional scoring.
+- **Flask Web Interface:** User-friendly deployment for browser access.
+- **Error Handling:** Robust processing of blank or invalid inputs.
+- **Formatted Output:** Clearly identifies the dominant emotion.
 
-## How to Use
-1. Input the principal amount.
-2. Input the annual interest rate (as a percentage).
-3. Input the time period in years.
-4. The tool will calculate the Simple Interest and the Total Amount.
+## Technology Stack
+- **Language:** Python 3.x
+- **Framework:** Flask
+- **AI Library:** Watson NLP
+- **Testing:** Unittest
+- **Formatting:** PyLint (Static Code Analysis)
+
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone [https://github.com/](https://github.com/)[YOUR_USERNAME]/[YOUR_REPO_NAME].git
