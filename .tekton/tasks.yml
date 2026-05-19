@@ -1,0 +1,33 @@
+# Test Task (using nosetests)
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: run-tests
+spec:
+  workspaces:
+    - name: source
+  steps:
+    - name: run-nose-tests
+      image: python:3.9
+      workingDir: $(workspaces.source.path)
+      script: |
+        pip install -r requirements.txt
+        nosetests --with-coverage --cover-package=app
+
+---
+
+# Cleanup Task
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: cleanup-workspace
+spec:
+  workspaces:
+    - name: source
+  steps:
+    - name: remove-temp-files
+      image: alpine
+      workingDir: $(workspaces.source.path)
+      script: |
+        echo "Cleaning up temporary files..."
+        rm -rf ./temp_build_assets
